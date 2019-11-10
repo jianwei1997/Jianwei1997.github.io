@@ -8,13 +8,11 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>建伟的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="潍坊学院15级,擅长软件开发,研究vc++前后端开发与数据库开发,此为博客一枚">
-<meta name="keywords" content="程序媛,c++,mfc,SQL Server,前端,极客,代码">
+  <meta name="keywords" content="程序媛,极客,编程,C++,mfc,代码,前端">
 <meta property="og:type" content="website">
 <meta property="og:title" content="建伟的博客">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;index.html">
 <meta property="og:site_name" content="建伟的博客">
-<meta property="og:description" content="潍坊学院15级,擅长软件开发,研究vc++前后端开发与数据库开发,此为博客一枚">
 <meta property="og:locale" content="en">
 <meta name="twitter:card" content="summary">
   
@@ -157,6 +155,271 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-ADO接口封装类" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/09/ADO%E6%8E%A5%E5%8F%A3%E5%B0%81%E8%A3%85%E7%B1%BB/">ADO接口封装类</a>
+    </h1>
+  
+
+        
+        <a href="/2019/11/09/ADO%E6%8E%A5%E5%8F%A3%E5%B0%81%E8%A3%85%E7%B1%BB/" class="archive-article-date">
+  	<time datetime="2019-11-09T13:49:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="AdoLx-h"><a href="#AdoLx-h" class="headerlink" title="AdoLx.h"></a>AdoLx.h</h2><p>支持Unicode、支持VS2015和VC6编译环境）<br>   //支持Unicode、支持Access、SQLServer和Oracle三大数据库<br>   #pragma once<br>   #pragma warning (disable:4146)<br>   #import “c:\program files\common files\system\ado\msado15.dll” no_namespace rename(“EOF”,”adoEOF”)rename(“BOF”,”adoBOF”)<br>class CAdoLx<br>{<br>    _RecordsetPtr m_pRst;<br>    _ConnectionPtr m_pConn;</p>
+<pre><code>CString m_szLastError;</code></pre><p>public:<br>    void Release()<br>    {<br>        m_pConn-&gt;Release();<br>    }<br>    BOOL GetFieldType(long nIndex, int &amp;nType);<br>    enum EType { DBT_ACCESS, DBT_SQL, DBT_ORACLE };</p>
+<pre><code>BOOL Connect(EType eType, LPCTSTR szDatabase, LPCTSTR szPass = NULL, LPCTSTR szUser = NULL, LPCTSTR szHost = NULL);
+
+int ExecSQL(LPCTSTR szSQL);
+//int ExecProc(LPCTSTR szSQL);
+BOOL Select(LPCTSTR szSQL);
+
+BOOL IsEOF();
+BOOL MoveNext();
+BOOL MovePrev();
+
+BOOL MoveFirst();
+BOOL MoveLast();
+
+BOOL GetFieldValue(LPCTSTR szField, COleDateTime &amp;tValue);
+BOOL GetFieldValue(LPCTSTR szField, double &amp;fValue);
+BOOL GetFieldValue(LPCTSTR szField, CString &amp;sValue);
+BOOL GetFieldValue(LPCTSTR szField, int &amp;iValue);
+int GetFieldMoney(LPCTSTR szField, double &amp;fValue);
+
+
+BOOL GetFieldByIndex(long nIndex, COleDateTime &amp;tValue);
+BOOL GetFieldByIndex(long nIndex, double &amp;fValue);
+BOOL GetFieldByIndex(long nIndex, CString &amp;sValue);
+BOOL GetFieldByIndex(long nIndex, int &amp;iValue);
+BOOL GetFieldByIndex(long nIndex, long &amp;lValue);
+BOOL GetFieldByIndex(long nIndex, DWORD &amp;dwValue);
+BOOL GetFieldByIndex(long nIndex, UINT &amp;iValue);
+BOOL GetFieldByIndex(long nIndex, char &amp;cValue);
+BOOL GetFieldByIndex(long nIndex, short &amp;nValue);
+BOOL GetFieldByIndex(long nIndex, BYTE &amp;cbValue);
+BOOL GetFieldByIndex(long nIndex, WORD &amp;wValue);
+
+BOOL GetFieldByIndex(long nIndex, TCHAR sValue[], int nSize);
+
+
+int GetFieldCount();
+BOOL GetFieldName(long nIndex, CString &amp;szName);
+
+int GetRecordCount();
+CString GetLastError()
+{
+    CString str = m_szLastError;
+    m_szLastError.Empty();
+    return str;
+}
+
+
+class CProc
+{
+    /*
+    enum ParameterDirectionEnum
+    {
+    adParamUnknown = 0,
+    adParamInput = 1,
+    adParamOutput = 2,
+    adParamInputOutput = 3,
+    adParamReturnValue = 4
+    };
+    */
+    CString m_szLastError;
+    _CommandPtr m_pCmd;
+    //_ConnectionPtr &amp; m_pConn;
+public:
+    LPCTSTR GetLastError() const
+    {
+        return m_szLastError;
+    }
+    int Exec();
+    BOOL Create(_ConnectionPtr &amp;pConn, LPCTSTR szProc);
+
+    BOOL AddParam(LPCTSTR szVName, long lParam, ParameterDirectionEnum eDir = adParamInput);
+    BOOL AddParam(LPCTSTR szVName, LPCTSTR szParam, ParameterDirectionEnum eDir = adParamInput);
+
+    BOOL GetValue(LPCTSTR szVName, long &amp;lParam);
+    BOOL GetValue(LPCTSTR szVName, CString &amp;lParam);
+
+    void Release()
+    {
+        delete this;
+    }
+    CProc()
+    {
+    }
+
+};
+CProc* CreateProc(LPCTSTR szProc);
+int ExecProc(CProc* pProc);
+
+CAdoLx();
+virtual ~CAdoLx();</code></pre><p>};</p>
+<p>‘’’</p>
+<h2 id="AdoLx-cpp"><a href="#AdoLx-cpp" class="headerlink" title="AdoLx.cpp"></a>AdoLx.cpp</h2><p>‘’’ bash<br>＄ 支持Unicode、支持VS2015和VC6编译环境）<br>//支持Unicode、支持Access、SQLServer和Oracle三大数据库<br>#include “stdafx.h”<br>#include “AdoLx.h”</p>
+<p>CAdoLx::CAdoLx()<br>{<br>    ::OleInitialize(NULL);<br>}</p>
+<p>CAdoLx::~CAdoLx()<br>{</p>
+<p>}</p>
+<p>BOOL CAdoLx::Connect(EType eType, LPCTSTR szDatabase, LPCTSTR szPass, LPCTSTR szUser, LPCTSTR szHost)<br>{<br>    CString str;<br>    switch (eType)<br>    {<br>    case DBT_ACCESS:<br>    {<br>        str.Format(TEXT(“Provider=MSDASQL.1;Persist Security Info=False;Data Source=MS Access Database;Initial Catalog=%s;Password=%s”),<br>            szDatabase,szPass);<br>    }<br>    break;<br>    case DBT_SQL:<br>    {<br>        str = TEXT(“Driver=SQL Server;Server=”);<br>        str += szHost;<br>        str += TEXT(“;Database=”);<br>        str += szDatabase;<br>        str += TEXT(“;UID=”);<br>        str += szUser;<br>        str += TEXT(“;PWD=”);<br>        str += szPass;<br>    }</p>
+<pre><code>break;
+case DBT_ORACLE:
+    str = TEXT(&quot;Provider=OraOLEDB.Oracle.1;Persist Security Info=False;User ID=&quot;);
+    str += szUser;
+    str += TEXT(&quot;;Password=&quot;);
+    str += szPass;
+    str += TEXT(&quot;;Data Source=&quot;);
+    str += szDatabase;
+    break;
+}
+
+try
+{
+    m_pConn.CreateInstance(__uuidof(Connection));
+    m_pConn-&gt;Open(_bstr_t(str), szUser, szPass, adModeUnknown);///连接数据库
+
+}
+catch (_com_error &amp;e)
+{
+    m_szLastError = (LPCTSTR)e.Description();
+    //    TRACE(m_szLastError+&quot;\n&quot;);
+    return FALSE;
+}
+return TRUE;</code></pre><p>}</p>
+<p>int CAdoLx::ExecSQL(LPCTSTR szSql)<br>{<br>    _variant_t vRet;<br>    try<br>    {<br>        m_pConn-&gt;Execute(szSql, &amp;vRet, adCmdText);<br>    }<br>    catch (_com_error &amp;e)<br>    {<br>        m_szLastError = (LPCTSTR)e.Description();<br>        return e.Error();<br>    }</p>
+<pre><code>return (long)vRet;</code></pre><p>}<br>BOOL CAdoLx::IsEOF()<br>{<br>    try<br>    {<br>        if (m_pRst-&gt;GetadoEOF())<br>            return TRUE;<br>    }<br>    catch (_com_error &amp;e)<br>    {<br>        m_szLastError = (LPCTSTR)e.Description();<br>    }<br>    return FALSE;<br>}</p>
+<p>BOOL CAdoLx::Select(LPCTSTR szSQL)<br>{<br>    try<br>    {<br>        if (m_pRst)<br>            m_pRst-&gt;Close();<br>        m_pRst.CreateInstance(__uuidof(Recordset));<br>        //        m_pRst -&gt;Open(szSQL,m_pConn.GetInterfacePtr(),adOpenForwardOnly,adLockReadOnly,adCmdText);<br>        m_pRst-&gt;Open(szSQL, m_pConn.GetInterfacePtr(), adOpenStatic, adLockReadOnly, adCmdText);<br>    }<br>    catch (_com_error &amp;e)<br>    {<br>        m_szLastError = (LPCTSTR)e.Description();<br>        return FALSE;<br>    }</p>
+<pre><code>return TRUE;</code></pre><p>}<br>int CAdoLx::GetFieldCount()<br>{<br>    try<br>    {<br>        return m_pRst-&gt;Fields-&gt;Count;<br>    }<br>    catch (_com_error &amp;e)<br>    {<br>        m_szLastError = (LPCTSTR)e.Description();<br>        return -1;<br>    }<br>    return -1;<br>}</p>
+<p>BOOL CAdoLx::GetFieldByIndex(long nIndex, TCHAR sValue[], int nSize)<br>{<br>    try<br>    {<br>        _variant_t v = m_pRst-&gt;GetCollect(nIndex);<br>        if (v.vt == VT_NULL)<br>        {<br>            <em>sValue = 0;<br>            return TRUE;<br>        }<br>        CString str = v.bstrVal;<br>        LPCTSTR p = str;<br>        int i = 0;<br>        while (–nSize &amp;&amp; (</em>sValue = *p) != 0)<br>        {<br>            sValue++;<br>            p++;<br>        }<br>        if (!nSize)<br>            *sValue = 0;<br>    }<br>    catch (_com_error &amp;e)<br>    {<br>        m_szLastError = (LPCTSTR)e.Description();<br>        return FALSE;<br>    }</p>
+<pre><code>return TRUE;</code></pre><p>}<br>BOOL CAdoLx::GetFieldName(long nIndex, CString &amp;szName)<br>{<br>    try<br>    {<br>        szName = (LPCTSTR)m_pRst-&gt;Fields-&gt;Item[nIndex]-&gt;Name;<br>    }<br>    catch (_com_error &amp;e)<br>    {<br>        m_szLastError = (LPCTSTR)e.Description();<br>        return FALSE;<br>    }<br>    return TRUE;<br>}<br>BOOL CAdoLx::GetFieldValue(LPCTSTR szField, int &amp;iValue)<br>{</p>
+<pre><code>try
+{
+    iValue = (long)m_pRst-&gt;GetCollect(szField);
+}
+catch (_com_error &amp;e)
+{
+    m_szLastError = (LPCTSTR)e.Description();
+    return FALSE;
+}
+return TRUE;</code></pre><p>}</p>
+<p>BOOL CAdoLx::GetFieldByIndex(long nIndex, int &amp;iValue)<br>{<br>    try<br>    {<br>        _variant_t v = m_pRst-&gt;GetCollect(nIndex);<br>        iValue = (long)v;<br>    }<br>    catch (_com_error &amp;e)<br>    {<br>        m_szLastError = (LPCTSTR)e.Description();<br>        return FALSE;<br>    }<br>    return TRUE;<br>}</p>
+<p>BOOL CAdoLx::GetFieldByIndex(long nIndex, CString &amp;szValue)<br>{<br>    try<br>    {<br>        _variant_t v = m_pRst-&gt;GetCollect(nIndex);<br>        if (v.vt == VT_NULL)<br>            szValue.Empty();<br>        else<br>            szValue = v.bstrVal;<br>    }<br>    catch (_com_error &amp;e)<br>    {<br>        m_szLastError = (LPCTSTR)e.Description();<br>        return FALSE;<br>    }<br>    return TRUE;<br>}</p>
+<p>BOOL CAdoLx::GetFieldByIndex(long nIndex, COleDateTime &amp;tValue)<br>{<br>    try<br>    {<br>        _variant_t v = m_pRst-&gt;GetCollect(nIndex);<br>        if (v.vt == VT_NULL)<br>            tValue = 0.0;<br>        else<br>            tValue = v;<br>        return TRUE;<br>    }<br>    catch (_com_error &amp;e)<br>    {<br>        m_szLastError = (LPCTSTR)e.Description();<br>        return FALSE;<br>    }<br>}</p>
+<p>BOOL CAdoLx::GetFieldByIndex(long nIndex, double &amp;fValue)<br>{<br>    try<br>    {<br>        _variant_t v = m_pRst-&gt;GetCollect(nIndex);<br>        if (v.vt == VT_NULL)<br>            fValue = 0.0;<br>        else<br>            fValue = v;<br>        return TRUE;<br>    }<br>    catch (_com_error &amp;e)<br>    {<br>        m_szLastError = (LPCTSTR)e.Description();<br>        return FALSE;<br>    }</p>
+<p>}</p>
+<p>BOOL CAdoLx::GetFieldByIndex(long nIndex, long &amp;lValue)<br>{<br>    try<br>    {<br>        _variant_t v = m_pRst-&gt;GetCollect(nIndex);<br>        if (v.vt == VT_NULL)<br>            lValue = 0;<br>        else<br>            lValue = v;<br>        return TRUE;<br>    }<br>    catch (_com_error &amp;e)<br>    {<br>        m_szLastError = (LPCTSTR)e.Description();<br>        return FALSE;<br>    }</p>
+<p>}<br>/*<br>LONG lVal;<br>BYTE bVal;<br>SHORT iVal;<br>FLOAT fltVal;<br>DOUBLE dblVal;<br>*/<br>BOOL CAdoLx::GetFieldByIndex(long nIndex, DWORD &amp;dwValue)<br>{<br>    try<br>    {<br>        _variant_t v = m_pRst-&gt;GetCollect(nIndex);<br>        if (v.vt == VT_NULL)<br>            dwValue = 0;<br>        else<br>            dwValue = v.lVal;<br>        return TRUE;<br>    }<br>    catch (_com_error &amp;e)<br>    {<br>        m_szLastError = (LPCTSTR)e.Description();<br>        return FALSE;<br>    }</p>
+<p>}</p>
+<p>BOOL CAdoLx::GetFieldByIndex(long nIndex, UINT &amp;iValue)<br>{<br>    try<br>    {<br>        _variant_t v = m_pRst-&gt;GetCollect(nIndex);<br>        if (v.vt == VT_NULL)<br>            iValue = 0;<br>        else<br>            iValue = v.lVal;<br>        return TRUE;<br>    }<br>    catch (_com_error &amp;e)<br>    {<br>        m_szLastError = (LPCTSTR)e.Description();<br>        return FALSE;<br>    }</p>
+<p>}<br>BOOL CAdoLx::GetFieldByIndex(long nIndex, char &amp;cValue)<br>{<br>    try<br>    {<br>        _variant_t v = m_pRst-&gt;GetCollect(nIndex);<br>        if (v.vt == VT_NULL)<br>            cValue = 0;<br>        else<br>            cValue = v.bVal;<br>        return TRUE;<br>    }<br>    catch (_com_error &amp;e)<br>    {<br>        m_szLastError = (LPCTSTR)e.Description();<br>        return FALSE;<br>    }</p>
+<p>}</p>
+<p>BOOL CAdoLx::GetFieldByIndex(long nIndex, short &amp;nValue)<br>{<br>    try<br>    {<br>        _variant_t v = m_pRst-&gt;GetCollect(nIndex);<br>        if (v.vt == VT_NULL)<br>            nValue = 0;<br>        else<br>            nValue = v;<br>        return TRUE;<br>    }<br>    catch (_com_error &amp;e)<br>    {<br>        m_szLastError = (LPCTSTR)e.Description();<br>        return FALSE;<br>    }</p>
+<p>}<br>BOOL CAdoLx::GetFieldByIndex(long nIndex, BYTE &amp;cbValue)<br>{<br>    try<br>    {<br>        _variant_t v = m_pRst-&gt;GetCollect(nIndex);<br>        if (v.vt == VT_NULL)<br>            cbValue = 0;<br>        else<br>            cbValue = v;<br>        return TRUE;<br>    }<br>    catch (_com_error &amp;e)<br>    {<br>        m_szLastError = (LPCTSTR)e.Description();<br>        return FALSE;<br>    }<br>}<br>BOOL CAdoLx::GetFieldByIndex(long nIndex, WORD &amp;wValue)<br>{<br>    try<br>    {<br>        _variant_t v = m_pRst-&gt;GetCollect(nIndex);<br>        if (v.vt == VT_NULL)<br>            wValue = 0;<br>        else<br>            wValue = v.iVal;<br>        return TRUE;<br>    }<br>    catch (_com_error &amp;e)<br>    {<br>        m_szLastError = (LPCTSTR)e.Description();<br>        return FALSE;<br>    }</p>
+<p>}</p>
+<p>BOOL CAdoLx::MoveFirst()<br>{<br>    try<br>    {<br>        return m_pRst-&gt;MoveFirst() == S_OK;<br>    }<br>    catch (_com_error &amp;e)<br>    {<br>        m_szLastError = (LPCTSTR)e.Description();<br>        return FALSE;<br>    }<br>}<br>BOOL CAdoLx::MoveLast()<br>{<br>    try<br>    {<br>        return m_pRst-&gt;MoveLast() == S_OK;<br>    }<br>    catch (_com_error &amp;e)<br>    {<br>        m_szLastError = (LPCTSTR)e.Description();<br>        return FALSE;<br>    }<br>}</p>
+<p>BOOL CAdoLx::MoveNext()<br>{<br>    try<br>    {<br>        return m_pRst-&gt;MoveNext() == S_OK;<br>    }<br>    catch (_com_error &amp;e)<br>    {<br>        m_szLastError = (LPCTSTR)e.Description();<br>        return FALSE;<br>    }<br>}<br>BOOL CAdoLx::MovePrev()<br>{<br>    try<br>    {<br>        return m_pRst-&gt;MovePrevious() == S_OK;<br>    }<br>    catch (_com_error &amp;e)<br>    {<br>        m_szLastError = (LPCTSTR)e.Description();<br>        return FALSE;<br>    }<br>}</p>
+<p>BOOL CAdoLx::GetFieldType(long nIndex, int &amp;nType)<br>{<br>    try<br>    {<br>        nType = m_pRst-&gt;Fields-&gt;Item[nIndex]-&gt;Type;<br>    }<br>    catch (_com_error &amp;e)<br>    {<br>        m_szLastError = (LPCTSTR)e.Description();<br>        return FALSE;<br>    }<br>    return TRUE;</p>
+<p>}</p>
+<p>BOOL CAdoLx::GetFieldValue(LPCTSTR szField, CString &amp;sValue)<br>{<br>    try<br>    {<br>        sValue = m_pRst-&gt;GetCollect(szField).bstrVal;<br>        return TRUE;<br>    }<br>    catch (_com_error &amp;e)<br>    {<br>        m_szLastError = (LPCTSTR)e.Description();<br>        return FALSE;<br>    }</p>
+<p>}<br>BOOL CAdoLx::GetFieldValue(LPCTSTR szField, COleDateTime &amp;tValue)<br>{<br>    try<br>    {<br>        tValue = (DATE)m_pRst-&gt;GetCollect(szField);<br>        return TRUE;<br>    }<br>    catch (_com_error &amp;e)<br>    {<br>        m_szLastError = (LPCTSTR)e.Description();<br>        return FALSE;<br>    }<br>}</p>
+<p>int CAdoLx::GetRecordCount()<br>{<br>    try<br>    {<br>        return m_pRst-&gt;GetRecordCount();<br>    }<br>    catch (_com_error &amp;e)<br>    {<br>        m_szLastError = (LPCTSTR)e.Description();<br>        return FALSE;<br>    }<br>}</p>
+<p>BOOL CAdoLx::CProc::Create(_ConnectionPtr &amp;pConn, LPCTSTR szProc)<br>{<br>    try<br>    {<br>        m_pCmd.CreateInstance(__uuidof(Command));<br>        m_pCmd-&gt;ActiveConnection = pConn;<br>        m_pCmd-&gt;CommandType = adCmdStoredProc;<br>        m_pCmd-&gt;CommandText = _bstr_t(szProc);<br>    }<br>    catch (_com_error &amp;e)<br>    {<br>        m_szLastError = (LPCTSTR)e.Description();<br>        return FALSE;<br>    }<br>    return TRUE;<br>}</p>
+<p>CAdoLx::CProc* CAdoLx::CreateProc(LPCTSTR szProc)<br>{<br>    if (m_pConn == NULL)return FALSE;<br>    CProc* pProc = new CProc;<br>    if (pProc-&gt;Create(m_pConn, szProc))<br>        return pProc;<br>    delete pProc;<br>    return NULL;<br>}</p>
+<p>BOOL CAdoLx::CProc::AddParam(LPCTSTR szVName, long lParam, ParameterDirectionEnum eDir)<br>{<br>    if (m_pCmd == NULL)<br>        return FALSE;<br>    try<br>    {<br>        _ParameterPtr pParam = m_pCmd-&gt;CreateParameter(szVName, adInteger, eDir, sizeof(long), lParam);<br>        m_pCmd-&gt;Parameters-&gt;Append(pParam);<br>    }<br>    catch (_com_error &amp;e)<br>    {<br>        m_szLastError = (LPCTSTR)e.Description();<br>        return FALSE;<br>    }</p>
+<pre><code>return TRUE;</code></pre><p>}<br>BOOL CAdoLx::CProc::AddParam(LPCTSTR szVName, LPCTSTR szParam, ParameterDirectionEnum eDir)<br>{<br>    if (m_pCmd == NULL)<br>        return FALSE;<br>    try<br>    {<br>        _ParameterPtr pParam = m_pCmd-&gt;CreateParameter(_bstr_t(szVName), adVarChar, eDir, lstrlen(szParam) + 2, szParam);<br>        m_pCmd-&gt;Parameters-&gt;Append(pParam);<br>    }<br>    catch (_com_error &amp;e)<br>    {<br>        m_szLastError = (LPCTSTR)e.Description();<br>        return FALSE;<br>    }</p>
+<pre><code>return TRUE;</code></pre><p>}</p>
+<p>int CAdoLx::CProc::Exec()<br>{<br>    try<br>    {<br>        m_pCmd-&gt;Execute(NULL, NULL, adCmdStoredProc);</p>
+<pre><code>}
+catch (_com_error&amp; e)
+{
+    m_szLastError = (LPCTSTR)e.Description();
+    return e.Error();
+}
+return 0;</code></pre><p>}</p>
+<p>BOOL CAdoLx::CProc::GetValue(LPCTSTR szVName, long &amp;lParam)<br>{<br>    try<br>    {<br>        _variant_t var = m_pCmd-&gt;Parameters-&gt;GetItem(_bstr_t(szVName))-&gt;GetValue();<br>        lParam = var;<br>    }<br>    catch (_com_error &amp;e)<br>    {<br>        m_szLastError = (LPCTSTR)e.Description();<br>        return FALSE;<br>    }<br>    return TRUE;<br>}</p>
+<p>BOOL CAdoLx::CProc::GetValue(LPCTSTR szVName, CString &amp;szParam)<br>{<br>    try<br>    {<br>        _bstr_t bstr = m_pCmd-&gt;Parameters-&gt;GetItem(_bstr_t(szVName))-&gt;GetValue();<br>        szParam = (LPCTSTR)bstr;<br>    }<br>    catch (_com_error &amp;e)<br>    {<br>        m_szLastError = (LPCTSTR)e.Description();<br>        return FALSE;<br>    }<br>    return TRUE;</p>
+<p>}</p>
+<p>int CAdoLx::ExecProc(CProc* pProc)<br>{<br>    /*    try<br>    {<br>    if(FAILED(m_pCmd.CreateInstance(__uuidof(Command))))<br>    {<br>    return -1;</p>
+<pre><code>}
+
+m_pCmd-&gt;ActiveConnection   =   m_pConn;
+m_pCmd-&gt;CommandType   =   adCmdStoredProc;
+m_pCmd-&gt;CommandText = L&quot;P_LOGIN&quot;;
+
+_ParameterPtr pParam = m_pCmd-&gt;CreateParameter(_bstr_t(&quot;v_empno&quot;), adInteger, adParamInput ,4,7839L);
+m_pCmd -&gt;Parameters -&gt;Append(pParam);
+
+pParam = m_pCmd-&gt;CreateParameter(_bstr_t(&quot;v_pass&quot;), adVarChar, adParamInput ,20, &quot;123456&quot;);
+m_pCmd -&gt;Parameters -&gt;Append(pParam);
+
+pParam = m_pCmd-&gt;CreateParameter(_bstr_t(&quot;v_return&quot;), adInteger, adParamReturnValue, 0);
+m_pCmd -&gt;Parameters -&gt;Append(pParam);
+
+m_pCmd-&gt;Execute(NULL, NULL, adCmdStoredProc);
+long nRet = m_pCmd-&gt;Parameters-&gt;GetItem(&quot;v_return&quot;)-&gt;GetValue();
+
+}
+catch(_com_error &amp;e)
+{
+
+m_szLastError =(LPCTSTR) e.Description();
+return e.Error();
+}*/
+return 0;</code></pre><p>}</p>
+<p>‘’’</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/11/09/ADO%E6%8E%A5%E5%8F%A3%E5%B0%81%E8%A3%85%E7%B1%BB/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
