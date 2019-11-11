@@ -156,6 +156,72 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Linux安装FTP服务器配置问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/11/Linux%E5%AE%89%E8%A3%85FTP%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E9%97%AE%E9%A2%98/">Linux安装FTP服务器配置问题</a>
+    </h1>
+  
+
+        
+        <a href="/2019/11/11/Linux%E5%AE%89%E8%A3%85FTP%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E9%97%AE%E9%A2%98/" class="archive-article-date">
+  	<time datetime="2019-11-11T12:01:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天因为要实现Linux系统和Windows系统的文件共享,安装FTP服务器时,根据查阅的资料,成功启动了FTP服务器,可是并不能实现写功能,经过重装服务器,仔细阅读查阅的资料后仍然不成功,百思不得起解,最后经过检查配置文件/etc/vsftp.conf后,是资料出现了错误,将listen项改为NO后,服务器成功实现读写创建等功能,</p>
+<h2 id="1-安装FTP服务器"><a href="#1-安装FTP服务器" class="headerlink" title="1:安装FTP服务器"></a>1:安装FTP服务器</h2><p>   apt-get install vsftpd dtp</p>
+<h2 id="2-配置服务器"><a href="#2-配置服务器" class="headerlink" title="2:配置服务器"></a>2:配置服务器</h2><p>   sudo gedit /etc/vsftpd.conf</p>
+<p>打开后配置如下:<br>   write _enable=YES<br>   其它项保持默认即可!!!</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/11/11/Linux%E5%AE%89%E8%A3%85FTP%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E9%97%AE%E9%A2%98/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-ADO接口封装类" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
