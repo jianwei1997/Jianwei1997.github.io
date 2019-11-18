@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="jianwei6999-GitHub">
 <meta property="og:description" content="AdoLx.h支持Unicode、支持VS2015和VC6编译环境）   &#x2F;&#x2F;支持Unicode、支持Access、SQLServer和Oracle三大数据库   #pragma once   #pragma warning (disable:4146)   #import “c:\program files\common files\system\ado\msado15.dll” no_name">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-10T13:03:30.962Z">
+<meta property="og:updated_time" content="2019-11-18T14:10:01.344Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="jianwei6999-GitHub" type="application/atom+xml">
@@ -211,10 +211,8 @@ BOOL GetFieldByIndex(long nIndex, short &amp;nValue);
 BOOL GetFieldByIndex(long nIndex, BYTE &amp;cbValue);
 BOOL GetFieldByIndex(long nIndex, WORD &amp;wValue);
 
-BOOL GetFieldByIndex(long nIndex, TCHAR sValue[], int nSize);
-
-
-int GetFieldCount();
+BOOL GetFieldByIndex(long nIndex, TCHAR sValue[], int nSize);</code></pre><a id="more"></a>
+<pre><code>int GetFieldCount();
 BOOL GetFieldName(long nIndex, CString &amp;szName);
 
 int GetRecordCount();
