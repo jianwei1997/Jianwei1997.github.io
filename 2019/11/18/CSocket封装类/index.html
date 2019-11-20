@@ -6,14 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | jianwei6999-GitHub</title>
+  <title>CSocket封装类 | jianwei6999-GitHub</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="程序媛,极客,编程,C++,mfc,代码,前端">
-<meta property="og:type" content="website">
-<meta property="og:title" content="jianwei6999-GitHub">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;archives&#x2F;index.html">
+  <meta name="description" content="CSockLx.hSockLx.h :（支持Unicode、支持VS2015和VC6编译环境）  #pragma once #define _WINSOCK_DEPRECATED_NO_WARNINGS #define _CRT_SECURE_NO_WARNINGS #include &amp;lt;stdlib.h&amp;gt;  #ifdef _WIN32 #include &amp;lt;WinSock2.h&amp;g">
+<meta name="keywords" content="程序媛,极客,编程,C++,mfc,代码,前端">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSocket封装类">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;18&#x2F;CSocket%E5%B0%81%E8%A3%85%E7%B1%BB&#x2F;index.html">
 <meta property="og:site_name" content="jianwei6999-GitHub">
+<meta property="og:description" content="CSockLx.hSockLx.h :（支持Unicode、支持VS2015和VC6编译环境）  #pragma once #define _WINSOCK_DEPRECATED_NO_WARNINGS #define _CRT_SECURE_NO_WARNINGS #include &amp;lt;stdlib.h&amp;gt;  #ifdef _WIN32 #include &amp;lt;WinSock2.h&amp;g">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-11-20T11:56:19.131Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="jianwei6999-GitHub" type="application/atom+xml">
@@ -154,130 +157,206 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-CSocket封装类" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      CSocket封装类
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/18/CSocket%E5%B0%81%E8%A3%85%E7%B1%BB/" class="archive-article-date">
+
+        
+        <a href="/2019/11/18/CSocket%E5%B0%81%E8%A3%85%E7%B1%BB/" class="archive-article-date">
   	<time datetime="2019-11-18T14:25:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-18</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/18/CSocket%E5%B0%81%E8%A3%85%E7%B1%BB/">CSocket封装类</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="CSockLx-h"><a href="#CSockLx-h" class="headerlink" title="CSockLx.h"></a>CSockLx.h</h2><p>SockLx.h :（支持Unicode、支持VS2015和VC6编译环境）</p>
+<p> #pragma once<br> #define _WINSOCK_DEPRECATED_NO_WARNINGS<br> #define _CRT_SECURE_NO_WARNINGS<br> #include &lt;stdlib.h&gt;</p>
+<p> #ifdef _WIN32<br> #include &lt;WinSock2.h&gt;<br> #include &lt;process.h&gt;<br> #ifdef _UNICODE<br> #include &lt;comdef.h&gt;<br> //#include &lt;WS2tcpip.h&gt;<br> #endif<br> <a id="more"></a><br>typedef int socklen_t;<br>typedef void RET_TYPE;<br> #else<br> #include &lt;errno.h&gt;<br> #include &lt;sys/types.h&gt;<br> #include &lt;sys/socket.h&gt;<br> #include &lt;netinet/in.h&gt;<br> #include &lt;arpa/inet.h&gt;<br> #include &lt;unistd.h&gt;<br> #include &lt;errno.h&gt;<br> #include &lt;string.h&gt;<br> typedef unsigned int SOCKET;<br> #define INVALID_SOCKET  (SOCKET)(~0)<br> #define SOCKET_ERROR            (-1)<br> #ifndef _T<br> #define _T(x) x<br> #endif<br> typedef struct in_addr IN_ADDR;<br> typedef unsigned long       DWORD;<br> typedef int                 BOOL;<br> typedef unsigned char       BYTE;<br> typedef unsigned short      WORD;<br> typedef float               FLOAT;<br> typedef FLOAT               *PFLOAT;<br> typedef BOOL            *PBOOL;<br> typedef BOOL             *LPBOOL;<br> typedef BYTE            *PBYTE;<br> typedef BYTE             *LPBYTE;<br> typedef int             *PINT;<br> typedef int              *LPINT;<br> typedef WORD            *PWORD;<br> typedef WORD             *LPWORD;<br> typedef long             *LPLONG;<br> typedef DWORD           *PDWORD;<br> typedef DWORD            *LPDWORD;<br> typedef void             *LPVOID;</p>
+<p> typedef int                 INT;<br> typedef unsigned int        UINT;<br> typedef unsigned int        <em>PUINT;<br> typedef const char</em> LPCTSTR,<em>LPCSTR;<br> typedef char</em> LPTSTR,<em>LPSTR;<br> typedef void</em> RET_TYPE;<br> inline int GetLastError()<br> {<br>    return errno;<br> }<br> #define closesocket(x) close(x)</p>
+<p> #ifndef FALSE<br> #define FALSE               0<br> #endif</p>
+<p> #ifndef TRUE<br> #define TRUE                1<br> #endif<br> #endif<br>//MFC中已有CScoket，不太支持控制台，不支持多线程<br>class CSockLx<br>{<br>protected:<br>    SOCKET m_hSocket;//核心成员变量<br>public:<br>    operator SOCKET() const<br>    {<br>        return m_hSocket;<br>    }<br>    BOOL Create(UINT nSocketPort = 0, int nSocketType = SOCK_STREAM<br>        , LPCTSTR lpszSocketAddress = NULL);</p>
+<pre><code>BOOL Accept(CSockLx&amp; rConnectedSocket, LPTSTR szIP = NULL, UINT *nPort = NULL);
+BOOL Connect(LPCTSTR lpszHostAddress, UINT nHostPort);
+BOOL Listen(int nConnectionBacklog = 5)
+{
+    return !listen(m_hSocket, nConnectionBacklog);
+}
+int SendTo(const void* lpBuf, int nBufLen, UINT nHostPort, LPCTSTR lpszHostAddress = NULL, int nFlags = 0);
 
-        <div class="article-info info-on-right">
-          
-          
+int ReceiveFrom(void* lpBuf, int nBufLen, LPTSTR rSocketAddress, UINT&amp; rSocketPort, int nFlags = 0);
 
+int Send(const void* lpBuf, int nBufLen, int nFlags = 0)
+{
+    return send(m_hSocket, (LPCSTR)lpBuf, nBufLen, nFlags);
+}
+int Receive(void* lpBuf, int nBufLen, int nFlags = 0)
+{
+    return recv(m_hSocket, (LPSTR)lpBuf, nBufLen, nFlags);
+}
+BOOL GetPeerName(LPTSTR rSocketAddress, UINT&amp; rSocketPort);
+BOOL GetSockName(LPTSTR rSocketAddress, UINT&amp; rSocketPort);
+
+void Close()
+{
+    closesocket(m_hSocket);
+    m_hSocket = INVALID_SOCKET;
+}</code></pre><p> #ifdef _UNICODE<br>    inline static void Pton(LPCTSTR sHostAddr, IN_ADDR &amp;in)<br>    {<br>            in.s_addr = inet_addr(_bstr_t(sHostAddr));<br>    }<br>    inline static void Ntop(IN_ADDR &amp;in, LPTSTR sHostAddr)<br>    {<br>        _tcscpy(sHostAddr, _bstr_t(inet_ntoa(in)));<br>    }</p>
+<p> #else<br>    inline static void Pton(LPCTSTR sHostAddr, IN_ADDR &amp;in)<br>    {<br>        in.s_addr = inet_addr(sHostAddr);<br>    }<br>    inline static void Ntop(IN_ADDR &amp;in, LPTSTR sHostAddr)<br>    {<br>        strcpy(sHostAddr, inet_ntoa(in));<br>    }<br> #endif</p>
+<pre><code>CSockLx();
+virtual ~CSockLx();</code></pre><p>};</p>
+<h2 id="CSockLx-cpp"><a href="#CSockLx-cpp" class="headerlink" title="CSockLx.cpp"></a>CSockLx.cpp</h2><p> #include “stdafx.h”<br> #include “SockLx.h”<br> #ifdef _WIN32<br> #pragma comment (lib,”ws2_32.lib”)<br> #endif</p>
+<p>CSockLx::CSockLx()<br>{<br> #ifdef _WIN32<br>    WSAData wd;<br>    WSAStartup(0x0202, &amp;wd);<br> #endif<br>    m_hSocket = INVALID_SOCKET;<br>}</p>
+<p>CSockLx::~CSockLx()<br>{<br>    Close();<br>}</p>
+<p>BOOL CSockLx::Create(UINT nSocketPort, int nSocketType, LPCTSTR lpszSocketAddress)<br>{//socket &amp; bind<br>    m_hSocket = socket(AF_INET, nSocketType, 0);<br>    if (m_hSocket == INVALID_SOCKET)<br>    {<br>        return FALSE;<br>    }<br>    sockaddr_in sa = { AF_INET,htons(nSocketPort) };<br>    if(lpszSocketAddress)<br>        Pton(lpszSocketAddress, sa.sin_addr);</p>
+<pre><code>return !bind(m_hSocket, (sockaddr*)&amp;sa, sizeof(sa));</code></pre><p>}</p>
+<p>BOOL CSockLx::Accept(CSockLx &amp; socka, LPTSTR sIP, UINT * nPort)<br>{<br>    sockaddr_in sa = { AF_INET };<br>    socklen_t nLen = sizeof(sa);<br>    socka.m_hSocket = accept(m_hSocket, (sockaddr*)&amp;sa, &amp;nLen);<br>    if (INVALID_SOCKET == socka.m_hSocket)<br>        return FALSE;<br>    if (sIP)<br>        Ntop(sa.sin_addr, sIP);<br>    if (nPort)<br>        *nPort = htons(sa.sin_port);<br>    return TRUE;<br>}</p>
+<p>BOOL CSockLx::Connect(LPCTSTR lpszHostAddress, UINT nHostPort)<br>{//封装也交隐藏<br>    sockaddr_in sa = { AF_INET,htons(nHostPort) };<br>    Pton(lpszHostAddress, sa.sin_addr);<br>    return !connect(m_hSocket, (sockaddr*)&amp;sa, sizeof(sa));<br>}</p>
+<p>int CSockLx::SendTo(const void * lpBuf, int nBufLen, UINT nHostPort, LPCTSTR lpszHostAddress, int nFlags)<br>{<br>    sockaddr_in sa = { AF_INET,htons(nHostPort) };<br>    Pton(lpszHostAddress, sa.sin_addr);<br>    sendto(m_hSocket, (const char<em>)lpBuf, nBufLen, 0, (sockaddr</em>)&amp;sa, sizeof(sa));<br>    return 0;<br>}</p>
+<p>int CSockLx::ReceiveFrom(void * lpBuf, int nBufLen, LPTSTR  rSocketAddress, UINT &amp; rSocketPort, int nFlags)<br>{<br>    sockaddr_in sa = { AF_INET };<br>    socklen_t nLen = sizeof(sa);<br>    int nRet = recvfrom(m_hSocket, (char<em>)lpBuf, nBufLen, 0, (sockaddr</em>)&amp;sa, &amp;nLen);<br>    if (nRet &lt;= 0)<br>        return nRet;</p>
+<pre><code>rSocketPort = htons(sa.sin_port);
+if (rSocketAddress)
+    Ntop(sa.sin_addr, rSocketAddress);
+return nRet;</code></pre><p>}</p>
+<p>BOOL CSockLx::GetPeerName(LPTSTR rSocketAddress, UINT &amp; rSocketPort)<br>{<br>    sockaddr_in sa = { AF_INET };<br>    socklen_t nLen = sizeof(sa);<br>    if (getpeername(m_hSocket, (sockaddr*)&amp;sa, &amp;nLen) &lt; 0)<br>        return FALSE;<br>    rSocketPort = htons(sa.sin_port);<br>    if (rSocketAddress)<br>        Ntop(sa.sin_addr, rSocketAddress);<br>    return TRUE;</p>
+<p>}</p>
+<p>BOOL CSockLx::GetSockName(LPTSTR rSocketAddress, UINT &amp; rSocketPort)<br>{<br>    sockaddr_in sa = { AF_INET };<br>    socklen_t nLen = sizeof(sa);<br>    if (getsockname(m_hSocket, (sockaddr*)&amp;sa, &amp;nLen) &lt; 0)<br>        return FALSE;<br>    rSocketPort = htons(sa.sin_port);<br>    if (rSocketAddress)<br>        Ntop(sa.sin_addr, rSocketAddress);<br>    return TRUE;<br>}</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" target="_blank" rel="noopener" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" target="_blank" rel="noopener" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" target="_blank" rel="noopener" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/11/18/CSocket%E5%B0%81%E8%A3%85%E7%B1%BB/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/11/Linux%E5%AE%89%E8%A3%85FTP%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E9%97%AE%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2019-11-11T12:01:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-11</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/11/11/Linux%E5%AE%89%E8%A3%85FTP%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E9%97%AE%E9%A2%98/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Linux安装FTP服务器配置问题</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/11/Linux%E5%AE%89%E8%A3%85FTP%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E9%97%AE%E9%A2%98/">Linux安装FTP服务器配置问题</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/09/ADO%E6%8E%A5%E5%8F%A3%E5%B0%81%E8%A3%85%E7%B1%BB/" class="archive-article-date">
-  	<time datetime="2019-11-09T13:49:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/09/ADO%E6%8E%A5%E5%8F%A3%E5%B0%81%E8%A3%85%E7%B1%BB/">ADO接口封装类</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/06/hello-world/" class="archive-article-date">
-  	<time datetime="2019-11-06T12:55:15.908Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/06/hello-world/">Hello World</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -300,8 +379,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
