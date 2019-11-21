@@ -6,14 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>jianwei6999-GitHub</title>
+  <title>多字节和宽字节之间的转换 | jianwei6999-GitHub</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="程序媛,极客,编程,C++,mfc,代码,前端">
-<meta property="og:type" content="website">
-<meta property="og:title" content="jianwei6999-GitHub">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;index.html">
+  <meta name="description" content="A2W、W2A、A2T、T2A的使用方法 char :单字节变量类型，表示ASCII码。  wchar_t :宽字节变量类型，用于表示Unicode字符.  TCHAR: VS下的中间类型。在“使用Unicode字符集”下TCHAR定义为wchar_t，在字符集 “未设置” 条件 下TCHAR定义为char.  (1) A2w的用法  USES_CONVERSION; CString Str; c">
+<meta name="keywords" content="程序媛,极客,编程,C++,mfc,代码,前端">
+<meta property="og:type" content="article">
+<meta property="og:title" content="多字节和宽字节之间的转换">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;21&#x2F;%E5%A4%9A%E5%AD%97%E8%8A%82%E5%92%8C%E5%AE%BD%E5%AD%97%E8%8A%82%E4%B9%8B%E9%97%B4%E7%9A%84%E8%BD%AC%E6%8D%A2&#x2F;index.html">
 <meta property="og:site_name" content="jianwei6999-GitHub">
+<meta property="og:description" content="A2W、W2A、A2T、T2A的使用方法 char :单字节变量类型，表示ASCII码。  wchar_t :宽字节变量类型，用于表示Unicode字符.  TCHAR: VS下的中间类型。在“使用Unicode字符集”下TCHAR定义为wchar_t，在字符集 “未设置” 条件 下TCHAR定义为char.  (1) A2w的用法  USES_CONVERSION; CString Str; c">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-11-21T12:18:19.858Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="jianwei6999-GitHub" type="application/atom+xml">
@@ -154,16 +157,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-多字节和宽字节之间的转换" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-多字节和宽字节之间的转换" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/21/%E5%A4%9A%E5%AD%97%E8%8A%82%E5%92%8C%E5%AE%BD%E5%AD%97%E8%8A%82%E4%B9%8B%E9%97%B4%E7%9A%84%E8%BD%AC%E6%8D%A2/">多字节和宽字节之间的转换</a>
+    <h1 class="article-title" itemprop="name">
+      多字节和宽字节之间的转换
     </h1>
   
 
@@ -188,6 +189,27 @@
       
 
       
+        <div class="page-reward">
+          <a href="javascript:;" target="_blank" rel="noopener" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
     </div>
     <div class="article-info article-info-index">
       
@@ -195,16 +217,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/21/%E5%A4%9A%E5%AD%97%E8%8A%82%E5%92%8C%E5%AE%BD%E5%AD%97%E8%8A%82%E4%B9%8B%E9%97%B4%E7%9A%84%E8%BD%AC%E6%8D%A2/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" target="_blank" rel="noopener" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" target="_blank" rel="noopener" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/11/21/%E5%A4%9A%E5%AD%97%E8%8A%82%E5%92%8C%E5%AE%BD%E5%AD%97%E8%8A%82%E4%B9%8B%E9%97%B4%E7%9A%84%E8%BD%AC%E6%8D%A2/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2019/11/18/CSocket%E5%B0%81%E8%A3%85%E7%B1%BB/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">CSocket封装类</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -224,315 +305,14 @@
 
 
 
-
   
-    <article id="post-CSocket封装类" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/18/CSocket%E5%B0%81%E8%A3%85%E7%B1%BB/">CSocket封装类</a>
-    </h1>
   
 
-        
-        <a href="/2019/11/18/CSocket%E5%B0%81%E8%A3%85%E7%B1%BB/" class="archive-article-date">
-  	<time datetime="2019-11-18T14:25:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="CSockLx-h"><a href="#CSockLx-h" class="headerlink" title="CSockLx.h"></a>CSockLx.h</h2><p>SockLx.h :（支持Unicode、支持VS2015和VC6编译环境）</p>
-<p> #pragma once<br> #define _WINSOCK_DEPRECATED_NO_WARNINGS<br> #define _CRT_SECURE_NO_WARNINGS<br> #include &lt;stdlib.h&gt;</p>
-<p> #ifdef _WIN32<br> #include &lt;WinSock2.h&gt;<br> #include &lt;process.h&gt;<br> #ifdef _UNICODE<br> #include &lt;comdef.h&gt;<br> //#include &lt;WS2tcpip.h&gt;<br> #endif<br>
-        
-          <a class="article-more-a" href="/2019/11/18/CSocket%E5%B0%81%E8%A3%85%E7%B1%BB/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/18/CSocket%E5%B0%81%E8%A3%85%E7%B1%BB/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Linux安装FTP服务器配置问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/11/Linux%E5%AE%89%E8%A3%85FTP%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E9%97%AE%E9%A2%98/">Linux安装FTP服务器配置问题</a>
-    </h1>
   
 
-        
-        <a href="/2019/11/11/Linux%E5%AE%89%E8%A3%85FTP%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E9%97%AE%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2019-11-11T12:01:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>今天因为要实现Linux系统和Windows系统的文件共享,安装FTP服务器时,根据查阅的资料,成功启动了FTP服务器,可是并不能实现写功能,经过重装服务器,仔细阅读查阅的资料后仍然不成功,百思不得起解,最后经过检查配置文件/etc/vsftp.conf后,是资料出现了错误,将listen项改为NO后,服务器成功实现读写创建等功能,</p>
-<h2 id="1-安装FTP服务器"><a href="#1-安装FTP服务器" class="headerlink" title="1:安装FTP服务器"></a>1:安装FTP服务器</h2><p>   apt-get install vsftpd dtp</p>
-<h2 id="2-配置服务器"><a href="#2-配置服务器" class="headerlink" title="2:配置服务器"></a>2:配置服务器</h2><p>   sudo gedit /etc/vsftpd.conf</p>
-<p>打开后配置如下:<br>   write _enable=YES<br>   其它项保持默认即可!!!</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/11/Linux%E5%AE%89%E8%A3%85FTP%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E9%97%AE%E9%A2%98/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-ADO接口封装类" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/09/ADO%E6%8E%A5%E5%8F%A3%E5%B0%81%E8%A3%85%E7%B1%BB/">ADO接口封装类</a>
-    </h1>
   
 
-        
-        <a href="/2019/11/09/ADO%E6%8E%A5%E5%8F%A3%E5%B0%81%E8%A3%85%E7%B1%BB/" class="archive-article-date">
-  	<time datetime="2019-11-09T13:49:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="AdoLx-h"><a href="#AdoLx-h" class="headerlink" title="AdoLx.h"></a>AdoLx.h</h2><p>支持Unicode、支持VS2015和VC6编译环境）<br>   //支持Unicode、支持Access、SQLServer和Oracle三大数据库<br>   #pragma once<br>   #pragma warning (disable:4146)<br>   #import “c:\program files\common files\system\ado\msado15.dll” no_namespace rename(“EOF”,”adoEOF”)rename(“BOF”,”adoBOF”)<br>class CAdoLx<br>{<br>    _RecordsetPtr m_pRst;<br>    _ConnectionPtr m_pConn;</p>
-<pre><code>CString m_szLastError;</code></pre><p>public:<br>    void Release()<br>    {<br>        m_pConn-&gt;Release();<br>    }<br>    BOOL GetFieldType(long nIndex, int &amp;nType);<br>    enum EType { DBT_ACCESS, DBT_SQL, DBT_ORACLE };</p>
-<pre><code>BOOL Connect(EType eType, LPCTSTR szDatabase, LPCTSTR szPass = NULL, LPCTSTR szUser = NULL, LPCTSTR szHost = NULL);
-
-int ExecSQL(LPCTSTR szSQL);
-//int ExecProc(LPCTSTR szSQL);
-BOOL Select(LPCTSTR szSQL);
-
-BOOL IsEOF();
-BOOL MoveNext();
-BOOL MovePrev();
-
-BOOL MoveFirst();
-BOOL MoveLast();
-
-BOOL GetFieldValue(LPCTSTR szField, COleDateTime &amp;tValue);
-BOOL GetFieldValue(LPCTSTR szField, double &amp;fValue);
-BOOL GetFieldValue(LPCTSTR szField, CString &amp;sValue);
-BOOL GetFieldValue(LPCTSTR szField, int &amp;iValue);
-int GetFieldMoney(LPCTSTR szField, double &amp;fValue);
-
-
-BOOL GetFieldByIndex(long nIndex, COleDateTime &amp;tValue);
-BOOL GetFieldByIndex(long nIndex, double &amp;fValue);
-BOOL GetFieldByIndex(long nIndex, CString &amp;sValue);
-BOOL GetFieldByIndex(long nIndex, int &amp;iValue);
-BOOL GetFieldByIndex(long nIndex, long &amp;lValue);
-BOOL GetFieldByIndex(long nIndex, DWORD &amp;dwValue);
-BOOL GetFieldByIndex(long nIndex, UINT &amp;iValue);
-BOOL GetFieldByIndex(long nIndex, char &amp;cValue);
-BOOL GetFieldByIndex(long nIndex, short &amp;nValue);
-BOOL GetFieldByIndex(long nIndex, BYTE &amp;cbValue);
-BOOL GetFieldByIndex(long nIndex, WORD &amp;wValue);
-
-BOOL GetFieldByIndex(long nIndex, TCHAR sValue[], int nSize);</code></pre>
-        
-          <a class="article-more-a" href="/2019/11/09/ADO%E6%8E%A5%E5%8F%A3%E5%B0%81%E8%A3%85%E7%B1%BB/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/09/ADO%E6%8E%A5%E5%8F%A3%E5%B0%81%E8%A3%85%E7%B1%BB/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/06/hello-world/">Hello World</a>
-    </h1>
-  
-
-        
-        <a href="/2019/11/06/hello-world/" class="archive-article-date">
-  	<time datetime="2019-11-06T12:55:15.908Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/06/hello-world/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
 
 
@@ -555,8 +335,8 @@ BOOL GetFieldByIndex(long nIndex, TCHAR sValue[], int nSize);</code></pre>
     <script>
 	var yiliaConfig = {
 		mathjax: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
